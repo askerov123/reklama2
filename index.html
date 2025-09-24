@@ -3,26 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RTML Academy - Программирование для всех уровней</title>
+    <title>HTML Academy - Программирование для нового поколения</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Базовые стили */
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #7c3aed;
-            --accent: #06d6a0;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --gray: #64748b;
-            --gray-light: #e2e8f0;
+            --primary: #ff4136;
+            --primary-light: #ff6b61;
+            --secondary: #2ecc40;
+            --accent: #0074d9;
+            --dark: #111;
+            --light: #f4f4f4;
+            --gray: #aaa;
+            --neon: #00ff9d;
+            --gradient: linear-gradient(135deg, #ff4136, #0074d9, #2ecc40);
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Segoe UI', 'Arial Rounded MT Bold', sans-serif;
         }
         
         body {
@@ -45,27 +46,42 @@
         h1, h2, h3, h4 {
             margin-bottom: 1rem;
             line-height: 1.2;
-            font-weight: 700;
+            font-weight: 800;
         }
         
         h1 {
             font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: -1px;
         }
         
         h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             text-align: center;
             margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 5px;
+            background: var(--gradient);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
         }
         
         h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
         
         p {
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
-            color: var(--gray);
+            color: #333;
         }
         
         .btn {
@@ -74,70 +90,87 @@
             background: var(--primary);
             color: white;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
+            border-radius: 50px;
+            font-weight: 700;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
             font-size: 1.1rem;
-            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 4px 15px rgba(255, 65, 54, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .btn:hover {
-            background: var(--primary-dark);
+            background: var(--primary-light);
             transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
+            box-shadow: 0 6px 20px rgba(255, 65, 54, 0.4);
         }
         
         .btn-secondary {
             background: var(--secondary);
-            box-shadow: 0 4px 6px rgba(124, 58, 237, 0.2);
+            box-shadow: 0 4px 15px rgba(46, 204, 64, 0.3);
         }
         
         .btn-secondary:hover {
-            background: #6d28d9;
-            box-shadow: 0 6px 12px rgba(124, 58, 237, 0.3);
+            background: #26b340;
+            box-shadow: 0 6px 20px rgba(46, 204, 64, 0.4);
         }
         
         .btn-accent {
             background: var(--accent);
-            box-shadow: 0 4px 6px rgba(6, 214, 160, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 116, 217, 0.3);
         }
         
         .btn-accent:hover {
-            background: #05b384;
-            box-shadow: 0 6px 12px rgba(6, 214, 160, 0.3);
+            background: #0063b3;
+            box-shadow: 0 6px 20px rgba(0, 116, 217, 0.4);
+        }
+        
+        .btn-neon {
+            background: var(--neon);
+            color: var(--dark);
+            box-shadow: 0 4px 15px rgba(0, 255, 157, 0.3);
+        }
+        
+        .btn-neon:hover {
+            background: #00e08a;
+            box-shadow: 0 6px 20px rgba(0, 255, 157, 0.4);
         }
         
         .text-center {
             text-align: center;
         }
         
-        .section-title {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 3rem;
+        /* Анимации */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
         
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 70%;
-            height: 4px;
-            background: var(--primary);
-            bottom: -10px;
-            left: 15%;
-            border-radius: 2px;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px var(--neon); }
+            50% { box-shadow: 0 0 20px var(--neon); }
+            100% { box-shadow: 0 0 5px var(--neon); }
         }
         
         /* Шапка */
         header {
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: rgba(17, 17, 17, 0.9);
+            color: white;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .header-content {
@@ -151,14 +184,19 @@
             display: flex;
             align-items: center;
             font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
+            font-weight: 800;
+            color: white;
             text-decoration: none;
         }
         
         .logo i {
             margin-right: 10px;
             font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .logo span {
+            color: var(--neon);
         }
         
         nav ul {
@@ -171,11 +209,12 @@
         }
         
         nav ul li a {
-            color: var(--dark);
+            color: white;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: color 0.3s;
             position: relative;
+            padding: 5px 0;
         }
         
         nav ul li a:after {
@@ -183,14 +222,14 @@
             position: absolute;
             width: 0;
             height: 2px;
-            background: var(--primary);
-            bottom: -5px;
+            background: var(--neon);
+            bottom: 0;
             left: 0;
             transition: width 0.3s;
         }
         
         nav ul li a:hover {
-            color: var(--primary);
+            color: var(--neon);
         }
         
         nav ul li a:hover:after {
@@ -201,12 +240,12 @@
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
-            color: var(--dark);
+            color: white;
         }
         
         /* Герой секция */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: linear-gradient(135deg, #111 0%, #333 100%);
             color: white;
             padding: 160px 0 100px;
             text-align: center;
@@ -219,28 +258,28 @@
             position: absolute;
             width: 200%;
             height: 200%;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="rgba(255,255,255,0.05)"><polygon points="50,0 100,100 0,100"/></svg>');
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 65, 54, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 255, 157, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(0, 116, 217, 0.1) 0%, transparent 50%);
             top: -50%;
             left: -50%;
             animation: float 20s infinite linear;
         }
         
-        @keyframes float {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
         .hero-content {
             position: relative;
             z-index: 1;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 1.5rem;
             color: white;
+            text-shadow: 0 0 10px rgba(0, 255, 157, 0.5);
+            animation: pulse 3s infinite;
         }
         
         .hero p {
@@ -252,8 +291,27 @@
         .hero-buttons {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.5rem;
             flex-wrap: wrap;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 4rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--neon);
+            display: block;
         }
         
         /* О нас */
@@ -271,33 +329,37 @@
             flex: 1;
         }
         
-        .about-stats {
+        .about-features {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
+            gap: 1.5rem;
             margin-top: 2rem;
         }
         
-        .stat-item {
-            text-align: center;
-            padding: 1.5rem;
-            background: var(--light);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
         
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: block;
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
         }
         
         .about-image {
             flex: 1;
-            border-radius: 10px;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: float 5s infinite ease-in-out;
         }
         
         .about-image img {
@@ -313,7 +375,7 @@
         
         /* Курсы */
         .courses {
-            background: var(--light);
+            background: linear-gradient(135deg, #f4f4f4 0%, #e0e0e0 100%);
         }
         
         .courses-grid {
@@ -324,26 +386,39 @@
         
         .course-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+        
+        .course-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
         }
         
         .course-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            animation: glow 2s infinite;
         }
         
         .course-header {
             padding: 1.5rem;
-            background: var(--primary);
+            background: var(--dark);
             color: white;
         }
         
         .course-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            color: var(--neon);
         }
         
         .course-content {
@@ -357,7 +432,7 @@
         
         .course-features li {
             padding: 0.5rem 0;
-            border-bottom: 1px solid var(--gray-light);
+            border-bottom: 1px solid #eee;
         }
         
         .course-features li:last-child {
@@ -365,15 +440,16 @@
         }
         
         .course-features li i {
-            color: var(--accent);
+            color: var(--secondary);
             margin-right: 10px;
         }
         
         .course-price {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.8rem;
+            font-weight: 800;
             color: var(--primary);
             margin: 1rem 0;
+            text-align: center;
         }
         
         /* Преимущества */
@@ -391,218 +467,82 @@
             text-align: center;
             padding: 2rem 1.5rem;
             background: var(--light);
-            border-radius: 10px;
+            border-radius: 15px;
             transition: transform 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
         .benefit-item:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
         .benefit-icon {
             font-size: 3rem;
-            color: var(--primary);
             margin-bottom: 1.5rem;
+            color: var(--primary);
         }
         
-        /* Преподаватели */
-        .teachers {
-            background: var(--light);
-        }
-        
-        .teachers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .teacher-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        /* Сообщество */
+        .community {
+            background: linear-gradient(135deg, #111 0%, #333 100%);
+            color: white;
             text-align: center;
         }
         
-        .teacher-image {
-            height: 200px;
-            overflow: hidden;
+        .community h2 {
+            color: white;
         }
         
-        .teacher-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
+        .community h2:after {
+            background: var(--neon);
         }
         
-        .teacher-card:hover .teacher-image img {
-            transform: scale(1.1);
+        .community-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 3rem 0;
+            flex-wrap: wrap;
         }
         
-        .teacher-info {
+        .community-stat {
+            text-align: center;
             padding: 1.5rem;
         }
         
-        .teacher-social {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
+        .community-icon {
+            font-size: 3rem;
+            color: var(--neon);
+            margin-bottom: 1rem;
         }
         
-        .teacher-social a {
-            color: var(--gray);
-            transition: color 0.3s;
+        .community-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
         }
         
-        .teacher-social a:hover {
-            color: var(--primary);
+        /* CTA */
+        .cta {
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
         }
         
-        /* Отзывы */
-        .testimonials {
+        .cta h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta h2:after {
             background: white;
         }
         
-        .testimonials-slider {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .testimonial-item {
-            background: var(--light);
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-        
-        .testimonial-text:before, .testimonial-text:after {
-            content: '"';
-            font-size: 3rem;
-            color: var(--primary);
-            opacity: 0.3;
-            position: absolute;
-        }
-        
-        .testimonial-text:before {
-            top: -10px;
-            left: -10px;
-        }
-        
-        .testimonial-text:after {
-            bottom: -30px;
-            right: -10px;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-        
-        .author-image {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-        }
-        
-        .author-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .author-info h4 {
-            margin-bottom: 0.2rem;
-        }
-        
-        .author-info p {
-            margin-bottom: 0;
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-        
-        /* Контакты */
-        .contact {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-        }
-        
-        .contact h2 {
-            color: white;
-        }
-        
-        .contact-content {
-            display: flex;
-            gap: 3rem;
-        }
-        
-        .contact-info, .contact-form {
-            flex: 1;
-        }
-        
-        .contact-info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-        }
-        
-        .contact-icon {
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .contact-form form {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 5px;
-            font-size: 1rem;
-            background: rgba(255,255,255,0.1);
-            color: white;
-            transition: border-color 0.3s;
-        }
-        
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            outline: none;
-            border-color: white;
-        }
-        
-        .form-group input::placeholder, .form-group textarea::placeholder {
-            color: rgba(255,255,255,0.7);
+        .cta p {
+            color: rgba(255,255,255,0.9);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
         }
         
         /* Футер */
@@ -637,7 +577,7 @@
             position: absolute;
             width: 40px;
             height: 3px;
-            background: var(--primary);
+            background: var(--neon);
             bottom: 0;
             left: 0;
         }
@@ -657,7 +597,7 @@
         }
         
         .footer-column ul li a:hover {
-            color: white;
+            color: var(--neon);
         }
         
         .social-links {
@@ -676,11 +616,13 @@
             border-radius: 50%;
             color: white;
             text-decoration: none;
-            transition: background 0.3s;
+            transition: all 0.3s;
         }
         
         .social-links a:hover {
-            background: var(--primary);
+            background: var(--neon);
+            color: var(--dark);
+            transform: translateY(-3px);
         }
         
         .copyright {
@@ -694,7 +636,7 @@
         /* Адаптивность */
         @media (max-width: 992px) {
             h1 {
-                font-size: 2.8rem;
+                font-size: 3rem;
             }
             
             h2 {
@@ -702,10 +644,6 @@
             }
             
             .about-content {
-                flex-direction: column;
-            }
-            
-            .contact-content {
                 flex-direction: column;
             }
         }
@@ -717,7 +655,7 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: white;
+                background: var(--dark);
                 box-shadow: 0 5px 10px rgba(0,0,0,0.1);
                 padding: 1rem 0;
             }
@@ -728,11 +666,11 @@
             
             nav ul {
                 flex-direction: column;
+                align-items: center;
             }
             
             nav ul li {
                 margin: 0;
-                text-align: center;
                 padding: 0.8rem 0;
             }
             
@@ -772,6 +710,10 @@
             h2 {
                 font-size: 1.8rem;
             }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -781,7 +723,7 @@
         <div class="container header-content">
             <a href="#" class="logo">
                 <i class="fas fa-code"></i>
-                RTML Academy
+                HTML<span>Academy</span>
             </a>
             <div class="mobile-menu">
                 <i class="fas fa-bars"></i>
@@ -791,9 +733,8 @@
                     <li><a href="#about">О нас</a></li>
                     <li><a href="#courses">Курсы</a></li>
                     <li><a href="#benefits">Преимущества</a></li>
-                    <li><a href="#teachers">Преподаватели</a></li>
-                    <li><a href="#testimonials">Отзывы</a></li>
-                    <li><a href="#contact">Контакты</a></li>
+                    <li><a href="#community">Сообщество</a></li>
+                    <li><a href="#cta">Начать учиться</a></li>
                 </ul>
             </nav>
         </div>
@@ -802,11 +743,25 @@
     <!-- Герой секция -->
     <section class="hero">
         <div class="container hero-content">
-            <h1>Стань востребованным IT-специалистом</h1>
-            <p>Онлайн-курсы программирования с нуля до профессионального уровня. Практическое обучение с менторской поддержкой и гарантией трудоустройства.</p>
+            <h1>Кодинг — это новый рок-н-ролл</h1>
+            <p>Освой программирование с нуля и стань частью IT-революции. Интерактивные курсы, поддержка комьюнити и гарантия результата.</p>
             <div class="hero-buttons">
-                <a href="#courses" class="btn btn-accent">Выбрать курс</a>
-                <a href="#contact" class="btn btn-secondary">Бесплатная консультация</a>
+                <a href="#courses" class="btn btn-neon">Выбрать курс</a>
+                <a href="#cta" class="btn btn-accent">Бесплатный урок</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">300K+</span>
+                    <span>Студентов</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">95%</span>
+                    <span>Завершают курс</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4.9</span>
+                    <span>Средний рейтинг</span>
+                </div>
             </div>
         </div>
     </section>
@@ -814,32 +769,52 @@
     <!-- О нас -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">О RTML Academy</h2>
+            <h2>Почему HTML Academy?</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>RTML Academy — это современная образовательная платформа, специализирующаяся на подготовке IT-специалистов. Мы помогаем нашим студентам освоить востребованные профессии в сфере программирования и веб-разработки.</p>
-                    <p>Наша методика сочетает в себе теорию и практику: вы сразу применяете полученные знания в реальных проектах под руководством опытных наставников.</p>
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">1500+</span>
-                            <span>Выпускников</span>
+                    <p>HTML Academy — это не просто онлайн-школа, а целое движение. Мы создаем образовательные продукты, которые меняют жизни людей и открывают двери в мир IT.</p>
+                    <p>Наша философия — обучение через практику. Ты не просто смотришь видео, а сразу применяешь знания в реальных проектах.</p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div>
+                                <h3>Быстрый старт</h3>
+                                <p>Первый результат уже через 2 часа</p>
+                            </div>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">95%</span>
-                            <span>Трудоустроены</span>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <div>
+                                <h3>Геймификация</h3>
+                                <p>Учись играючи с системой достижений</p>
+                            </div>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">25</span>
-                            <span>Преподавателей</span>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div>
+                                <h3>Комьюнити</h3>
+                                <p>Общайся с единомышленниками</p>
+                            </div>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">4.9</span>
-                            <span>Средняя оценка</span>
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div>
+                                <h3>Карьера</h3>
+                                <p>Помогаем с трудоустройством</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Студенты RTML Academy">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Студенты HTML Academy">
                 </div>
             </div>
         </div>
@@ -848,45 +823,45 @@
     <!-- Курсы -->
     <section id="courses" class="courses">
         <div class="container">
-            <h2 class="section-title">Наши курсы</h2>
+            <h2>Наши хитовые курсы</h2>
             <div class="courses-grid">
                 <div class="course-card">
                     <div class="course-header">
                         <div class="course-icon">
-                            <i class="fab fa-js-square"></i>
+                            <i class="fab fa-html5"></i>
                         </div>
-                        <h3>JavaScript разработчик</h3>
+                        <h3>HTML & CSS Pro</h3>
                     </div>
                     <div class="course-content">
-                        <p>Полный курс по JavaScript, включая современные фреймворки React и Node.js. Научитесь создавать интерактивные веб-приложения.</p>
+                        <p>Создавай современные сайты с нуля. Освой верстку, анимации и адаптивный дизайн.</p>
                         <ul class="course-features">
-                            <li><i class="fas fa-check"></i> Длительность: 6 месяцев</li>
+                            <li><i class="fas fa-check"></i> Длительность: 2 месяца</li>
                             <li><i class="fas fa-check"></i> Уровень: с нуля</li>
-                            <li><i class="fas fa-check"></i> Проекты в портфолио: 5+</li>
-                            <li><i class="fas fa-check"></i> Поддержка ментора</li>
+                            <li><i class="fas fa-check"></i> Проекты в портфолио: 10+</li>
+                            <li><i class="fas fa-check"></i> Сертификат по окончании</li>
                         </ul>
-                        <div class="course-price">24 900 ₽/мес</div>
-                        <a href="#" class="btn btn-secondary">Подробнее</a>
+                        <div class="course-price">14 900 ₽</div>
+                        <a href="#" class="btn">Начать сейчас</a>
                     </div>
                 </div>
                 
                 <div class="course-card">
                     <div class="course-header">
                         <div class="course-icon">
-                            <i class="fab fa-python"></i>
+                            <i class="fab fa-js-square"></i>
                         </div>
-                        <h3>Python разработчик</h3>
+                        <h3>JavaScript Мастер</h3>
                     </div>
                     <div class="course-content">
-                        <p>Изучите Python для веб-разработки, анализа данных и автоматизации. Освойте Django, Flask и основы Data Science.</p>
+                        <p>Стань полноценным фронтенд-разработчиком. От основ до сложных фреймворков.</p>
                         <ul class="course-features">
-                            <li><i class="fas fa-check"></i> Длительность: 8 месяцев</li>
-                            <li><i class="fas fa-check"></i> Уровень: с нуля</li>
-                            <li><i class="fas fa-check"></i> Проекты в портфолио: 6+</li>
-                            <li><i class="fas fa-check"></i> Карьерная поддержка</li>
+                            <li><i class="fas fa-check"></i> Длительность: 4 месяца</li>
+                            <li><i class="fas fa-check"></i> Уровень: с базовыми знаниями</li>
+                            <li><i class="fas fa-check"></i> React, Vue на выбор</li>
+                            <li><i class="fas fa-check"></i> Карьерная консультация</li>
                         </ul>
-                        <div class="course-price">22 900 ₽/мес</div>
-                        <a href="#" class="btn btn-secondary">Подробнее</a>
+                        <div class="course-price">24 900 ₽</div>
+                        <a href="#" class="btn">Начать сейчас</a>
                     </div>
                 </div>
                 
@@ -895,18 +870,18 @@
                         <div class="course-icon">
                             <i class="fas fa-mobile-alt"></i>
                         </div>
-                        <h3>React Native разработчик</h3>
+                        <h3>React Native</h3>
                     </div>
                     <div class="course-content">
-                        <p>Научитесь создавать кроссплатформенные мобильные приложения с помощью React Native. От основ до публикации в магазинах приложений.</p>
+                        <p>Создавай кроссплатформенные мобильные приложения. От идеи до публикации.</p>
                         <ul class="course-features">
-                            <li><i class="fas fa-check"></i> Длительность: 5 месяцев</li>
+                            <li><i class="fas fa-check"></i> Длительность: 3 месяца</li>
                             <li><i class="fas fa-check"></i> Уровень: с опытом JS</li>
-                            <li><i class="fas fa-check"></i> Проекты в портфолио: 4+</li>
-                            <li><i class="fas fa-check"></i> Помощь с трудоустройством</li>
+                            <li><i class="fas fa-check"></i> 2 готовых приложения</li>
+                            <li><i class="fas fa-check"></i> Поддержка ментора</li>
                         </ul>
-                        <div class="course-price">26 900 ₽/мес</div>
-                        <a href="#" class="btn btn-secondary">Подробнее</a>
+                        <div class="course-price">19 900 ₽</div>
+                        <a href="#" class="btn">Начать сейчас</a>
                     </div>
                 </div>
             </div>
@@ -916,190 +891,214 @@
     <!-- Преимущества -->
     <section id="benefits" class="benefits">
         <div class="container">
-            <h2 class="section-title">Наши преимущества</h2>
+            <h2>Что тебя ждет?</h2>
             <div class="benefits-grid">
                 <div class="benefit-item">
                     <div class="benefit-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h3>Практические навыки</h3>
-                    <p>80% времени уделяем практике и реальным проектам</p>
+                    <h3>Интерактивный тренажер</h3>
+                    <p>Практикуйся прямо в браузере без установки дополнительных программ</p>
                 </div>
                 
                 <div class="benefit-item">
                     <div class="benefit-icon">
-                        <i class="fas fa-user-tie"></i>
+                        <i class="fas fa-trophy"></i>
                     </div>
-                    <h3>Опытные менторы</h3>
-                    <p>Преподаватели с опытом работы в ведущих IT-компаниях</p>
+                    <h3>Достижения и бейджи</h3>
+                    <p>Зарабатывай награды за прогресс и делись успехами с друзьями</p>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Живое общение</h3>
+                    <p>Чат с преподавателями и одногруппниками 24/7</p>
                 </div>
                 
                 <div class="benefit-item">
                     <div class="benefit-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
-                    <h3>Трудоустройство</h3>
+                    <h3>Карьерный рост</h3>
                     <p>Помогаем с составлением резюме и подготовкой к собеседованиям</p>
                 </div>
-                
-                <div class="benefit-item">
-                    <div class="benefit-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Комьюнити</h3>
-                    <p>Доступ к закрытому сообществу выпускников и IT-специалистов</p>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Преподаватели -->
-    <section id="teachers" class="teachers">
+    <!-- Сообщество -->
+    <section id="community" class="community">
         <div class="container">
-            <h2 class="section-title">Наши преподаватели</h2>
-            <div class="teachers-grid">
-                <div class="teacher-card">
-                    <div class="teacher-image">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Алексей Смирнов">
+            <h2>Стань частью комьюнити</h2>
+            <p>Присоединяйся к самому большому IT-сообществу в России</p>
+            
+            <div class="community-stats">
+                <div class="community-stat">
+                    <div class="community-icon">
+                        <i class="fab fa-telegram"></i>
                     </div>
-                    <div class="teacher-info">
-                        <h3>Алексей Смирнов</h3>
-                        <p>Senior Frontend Developer с 8-летним опытом. Работал в Яндекс и Tinkoff.</p>
-                        <div class="teacher-social">
-                            <a href="#"><i class="fab fa-github"></i></a>
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-telegram"></i></a>
-                        </div>
-                    </div>
+                    <span class="community-number">50K+</span>
+                    <span>Участников в Telegram</span>
                 </div>
                 
-                <div class="teacher-card">
-                    <div class="teacher-image">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Мария Ковалева">
+                <div class="community-stat">
+                    <div class="community-icon">
+                        <i class="fas fa-calendar-alt"></i>
                     </div>
-                    <div class="teacher-info">
-                        <h3>Мария Ковалева</h3>
-                        <p>Fullstack Developer, специалист по Python и Django. Опыт преподавания 5 лет.</p>
-                        <div class="teacher-social">
-                            <a href="#"><i class="fab fa-github"></i></a>
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-telegram"></i></a>
-                        </div>
-                    </div>
+                    <span class="community-number">100+</span>
+                    <span>Митапов в год</span>
                 </div>
                 
-                <div class="teacher-card">
-                    <div class="teacher-image">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Дмитрий Попов">
+                <div class="community-stat">
+                    <div class="community-icon">
+                        <i class="fas fa-user-friends"></i>
                     </div>
-                    <div class="teacher-info">
-                        <h3>Дмитрий Попов</h3>
-                        <p>Mobile Developer, эксперт по React Native. Создал более 20 приложений.</p>
-                        <div class="teacher-social">
-                            <a href="#"><i class="fab fa-github"></i></a>
-                            <a href="#"><i class="fab fa-linkedin"></i></a>
-                            <a href="#"><i class="fab fa-telegram"></i></a>
-                        </div>
-                    </div>
+                    <span class="community-number">10K+</span>
+                    <span>Выпускников в IT</span>
                 </div>
             </div>
+            
+            <a href="#" class="btn btn-neon">Присоединиться к комьюнити</a>
         </div>
     </section>
 
-    <!-- Отзывы -->
-    <section id="testimonials" class="testimonials">
+    <!-- CTA -->
+    <section id="cta" class="cta">
         <div class="container">
-            <h2 class="section-title">Отзывы выпускников</h2>
-            <div class="testimonials-slider">
-                <div class="testimonial-item">
-                    <div class="testimonial-text">
-                        Прошел курс JavaScript разработчика. Благодаря практическим заданиям и поддержке ментора смог устроиться на работу через месяц после окончания курса. Очень доволен результатом!
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-image">
-                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Иван Петров">
-                        </div>
-                        <div class="author-info">
-                            <h4>Иван Петров</h4>
-                            <p>Frontend Developer в Сбере</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h2>Готов изменить свою жизнь?</h2>
+            <p>Начни свой путь в IT уже сегодня. Первый урок — бесплатно!</p>
+            <a href="#" class="btn btn-secondary">Получить бесплатный урок</a>
         </div>
     </section>
 
-    <!-- Контакты -->
-    <section id="contact" class="contact">
+    <!-- Футер -->
+    <footer>
         <div class="container">
-            <h2 class="section-title">Свяжитесь с нами</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-info-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h3>Адрес</h3>
-                            <p>г. Москва, ул. Тверская, д. 15, офис 305</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-info-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div>
-                            <h3>Телефон</h3>
-                            <p>+7 (495) 123-45-67</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-info-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h3>Email</h3>
-                            <p>info@rtmlacademy.ru</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-info-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div>
-                            <h3>Время работы</h3>
-                            <p>Пн-Пт: 9:00 - 20:00<br>Сб-Вс: 10:00 - 18:00</p>
-                        </div>
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>HTML Academy</h3>
+                    <p>Самый крутой способ войти в IT. Обучение, которое действительно работает.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Ваше имя</label>
-                            <input type="text" id="name" placeholder="Иван Иванов" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" placeholder="example@mail.ru" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Телефон</label>
-                            <input type="tel" id="phone" placeholder="+7 (999) 999-99-99">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="course">Интересующий курс</label>
-                            <select id="course">
-                                <option value="">Выберите курс</option>
-                                <option value="js">JavaScript разработчик</option>
-                                <option value="python">Python разработчик</option>
-                                <option value="react">React Native разработчик</option>
-                                <option value="other">Другое</option>
-                            </select>
-                        </div
+                <div class="footer-column">
+                    <h3>Курсы</h3>
+                    <ul>
+                        <li><a href="#">HTML & CSS</a></li>
+                        <li><a href="#">JavaScript</a></li>
+                        <li><a href="#">React</a></li>
+                        <li><a href="#">Node.js</a></li>
+                        <li><a href="#">Все курсы</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Поддержка</h3>
+                    <ul>
+                        <li><a href="#">Помощь</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Контакты</a></li>
+                        <li><a href="#">Для бизнеса</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li>info@htmlacademy.ru</li>
+                        <li>+7 (800) 555-35-35</li>
+                        <li>Москва, ул. Кодовая, д. 42</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 HTML Academy. Сделано с ❤️ для нового поколения</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Мобильное меню
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('header nav').classList.toggle('active');
+        });
+        
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Закрываем мобильное меню после клика
+                    if(window.innerWidth <= 768) {
+                        document.querySelector('header nav').classList.remove('active');
+                    }
+                }
+            });
+        });
+        
+        // Анимация чисел в статистике
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                element.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+        
+        // Запуск анимации при прокрутке до секции
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number, .community-number');
+                    statNumbers.forEach(stat => {
+                        const value = parseInt(stat.textContent);
+                        animateValue(stat, 0, value, 2000);
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        observer.observe(document.querySelector('.hero'));
+        observer.observe(document.querySelector('.community'));
+        
+        // Эффект параллакса для героя
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            hero.style.backgroundPositionY = -(scrolled * 0.5) + 'px';
+            
+            // Фиксированная шапка с эффектом
+            const header = document.querySelector('header');
+            if(window.scrollY > 100) {
+                header.style.background = 'rgba(17, 17, 17, 0.95)';
+            } else {
+                header.style.background = 'rgba(17, 17, 17, 0.9)';
+            }
+        });
+    </script>
+</body>
+</html>
